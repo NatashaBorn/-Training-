@@ -1,6 +1,6 @@
 <div id="rightCol">
     <div class="banner">
-       <?php/*
+       <?php
         $connect=mysql_connect("localhost","root","")or die(mysql_error());
         mysql_select_db("MyDB");
             if(isset($_POST["enter"])){
@@ -36,7 +36,7 @@
             <input type="submit" name="enter" value="Autorization"><br>
             <a href="reg.php">Зарегистрироваться</a>     
         </form>';
-            }*/
+            }
         ?>
     </div>
     <div class="banner">
