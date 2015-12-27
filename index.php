@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,121 +8,69 @@
         ?>
     </head>
     <body>
-        <?php require_once "blocks/header.php"?>
-        
+        <div id="wrap_wrapper">
+        <?php require "blocks/header.php"?>
         <div id="wrapper">
           <?php require_once "blocks/panel.php"?>
            <div id="leftCol">
+               
                <?php
                     $connection = mysql_connect("localhost", "root","");
                     $db = mysql_select_db("Articles");
                     if(!$connection||!$db){
-			exit(mysql_error());
-			}
-                    
-                    $base=$_GET['base'];
+			             exit(mysql_error());
+			         }
+                    $type=$_GET['type'];
                     
                     if(isset($_GET)){
-                        $result=mysql_query("SELECT * FROM $base");
+                        $result=mysql_query("SELECT * FROM articles WHERE type = '$type'");
+                        $count1=mysql_num_rows($result);
                     }
-                    else {
-                        $result=mysql_query("SELECT * FROM news");
+                    if(!isset($_GET['type'])) {
+                        echo '<div id="main"><p style="margin-top: 0px;">Современный бодибилдинг уже давно превратился в большой бизнес, поэтому львиная доля статей, книг, курсов, методик ориентирована на получение прибыли и не приносит реальной пользы спортсменам, особенно тем, которые еще не нашли свой собственный путь…
+Основная цель моего сайта – дать Вам уникальные знания, которые станут незаменимым инструментом для построения собственной формулы успеха в бодибилдинге. Отсюда и название проекта – ТвойТренинг, которое выражает индивидуальность нашего вида спорта. Самопознание даст Вам новую силу, а разум поможет ее удержать…</p>
+<ul>Задумайтесь, что лучше:<br>
+    <li>Следовать чьей-то злой воле либо же обрести свою собственную стратегию тренировки?</li>
+    <li>Упорно «биться головой об стену», не понимая смысла своих действий на тренировках либо же, раз и навсегда, уяснить для себя, что такое тренировка мышц?</li>
+    <li>Надеяться, что завтра Вам удастся накачать мышцы либо сегодня же разобраться в том, как они растут и что является причиной роста мышц?</li>
+    <li>Верить в «чудо упражнения» либо же понять, как взаимосвязаны мышечная масса и физические нагрузки?</li>
+    <li>Использовать сомнительные программы тренировок, либо же научиться составлять свои, заточенные конкретно под Ваш организм?</li>
+    <li>Завидовать чужим результатам либо же добиться успеха самому?</li></ul>
+<p>Портал «Workout» - не просто сайт о бодибилдинге, он призван стать проводником в океане информации. На страницах данного портала бодибилдинг позиционируется не просто как вид спорта, а как наука. Такой подход предоставит ответы на все интересующие Вас вопросы.
+<br>Бодибилдинг – прекрасный вид спорта, но развитие собственного тела – тяжелый и ответственный процесс. Грамотная тренировка мышц требует от спортсмена максимальной самоотдачи, железной воли, а главное – разумных действий. Поэтому, Вы либо сделаете шаг к лучшему, либо снова упустите свой шанс…
+<br>Помните: мы сами творим свою жизнь, двигаясь назад либо вперед. А вот в какую сторону шагнуть сейчас – решать Вам, у каждого свой путь!</p></div>';
+                        
                     }
-                    
                    
-                    //$result=mysql_query("SELECT * FROM $base");
-                    $max_articles=3;
-                    $num_articles=mysql_num_rows($result);
-                    $num_pages=intval(($num_articles-1)/$max_articles)+1;
-                    
-                    for($i=1;$i<=$num_pages;$i++)
-                        echo '<a href="index.php?base='.$base.'&page='.$i.'">'.$i.'</a>';
-					
-                    if(isset($_GET["page"])){
-                        $page=$_GET["page"];
-                        if($page<1)
-                            $page=1;
-                        elseif($page>$num_pages)
-                            $page=$num_pages;
-                    }
-                    else
-                        $page=1;
-                    
                     mysql_close();
-					/*$row=mysql_fetch_array($result);
-					echo $row['title'];
-                    '.$row["title"].'
-                    '.$row["intro_text"].'
-                    '.$row["date"].'
-                    '.$row["time"].'
-                    '.$base.'
-                    '.$row["id"].'
-                    */
-                    $row= mysql_fetch_array($result);
-                    do{
-                        if(($row["id"]>($page*$max_articles-$max_articles))&&($row["id"]<=$page*$max_articles)){
-               ?> 
-                    <div id="articles">  
-                    <?php echo '<img src="img/articles/'.$base.'/'.$row["id"].'.jpg">';?>
-                    <h1><?php echo $row['title'];?></h1>
+           
+                    $count=$row["id"]-1;
+                    
+                    while ($row= mysql_fetch_array($result)) {                   
+                    ?>   
+                    <div id="articles">
+                    <?php echo'<a href="article.php?type='.$row['type'].'&id='.$row["id"].'">
+                    <h1 class="title">'.$row['title'].'</h1>
+                    </a>';?>    
+                    
+                    <?php echo '<img src="img/articles/'.$row['image'].'">';?>
                     <p><?php echo $row['intro_text'];?></p>
-                    <?php echo'<a href="article.php?base='.$base.'&id='.$row["id"].'">
-                    <div class="more">Далее</div>
+                    
+                    <div style="clear:both;"></div>
+                    <?php echo'<a href="article.php?type='.$row['type'].'&id='.$row["id"].'" style="margin: 15px;">
+                    Подробнее...
                     </a>';?>
                     </div>
-                    <?php }
-                    }while ($row= mysql_fetch_array($result))?>
+               
+                    <?php 
+                    } ?>
                     
-                       
-
-                    <!--/*for($i=0;$i<count($news);$i++){
-                        if($i==0)
-                            echo '<div id="bigArticle">';
-                        else
-                            echo '<div id="article">';
-                        $row = mysql_fetch_array($result);
-                        echo'<img src="img/articles/1.jpg" alt="Статья 1" title="Статья 1"> 
-                    <h2>'.$row["title"].'</h2>
-                    <p>'.$row["intro_text"].'</p>
-                    <p>Дата публикации: '.$row["date"].' /  '.$row["time"].'</p>
-                    <p>Автор новости: '.$row["author"].'</p>
-                    <a href="article.php">
-                    <div class="more">Далее</div>
-                    </a>
-                        
-                    </div>';
-                        if($i==0)
-                            echo '<div class="clear"><br></div>';
-                    }?>*/-->
-                <!--<div id="bigArticle">
-                    <img src="img/articles/1.jpg" alt="Статья 1" title="Статья 1">
-                    <h2>Статья 1</h2>
-                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. </p>
-                    <a href="article.php">
-                    <div class="more">Далее</div>
-                    </a>
                 </div>
-                <div class="clear"><br></div>
-                <div class="article">
-                    <img src="img/articles/2.jpg" alt="Статья 2" title="Статья 2">
-                    <h2>Статья 3</h2>
-                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн.</p>
-                    <a href="article.php">
-                    <div class="more">Далее</div>
-                    </a>
-                </div>
-                <div class="article">
-                    <img src="img/articles/3.jpg" alt="Статья 3" title="Статья 3">
-                    <h2>Статья 3</h2>
-                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн.</p>
-                    <a href="article.php">
-                    <div class="more">Далее</div>
-                    </a>
-                </div>-->
-            </div>
+            
             <?php require_once "blocks/rightCol.php"?>
-        </div>
+           </div>
         <?php require_once "blocks/footer.php"?>
-        
+           
+        </div>
     </body>
 </html>

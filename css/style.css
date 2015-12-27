@@ -6,18 +6,21 @@
 }
 
 html{
-    height: 100%;
-    width: 90%;
-    margin-left:5%;
+    /*height: 100%;*/
+    width: 100%;
+    /*background-size: contain;*/
+    background: white url("../img/fon.jpg") repeat scroll 0% 0%;
+    /*background: white;*/
 }
 body{
     width: 100%;
     height: 100%;
-    background-color: #dfff;
-    color: #333;
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 1em;
+    /*background: white url("../img/fon.jpg") repeat scroll 0% 0%;*/
+    color: rgba(73, 58, 191, 0.87);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 0.85em;
     line-height: 135%;
+        
 }
 img{
     max-width: 100%;
@@ -25,28 +28,48 @@ img{
     /*width: auto\9; для интернет эксплорер до 8*/
 }
 a{
-    color: #c61f52;
+    background-color: rgb(88,100,186,0.87);
+    color: rgba(73, 58, 191, 0.87);
+    /*border-radius: 15px;*/
+    text-indent: 0;
     text-decoration: none;
+    
 }
 a:hover{
-    color: #5c6ce6;
+    color: #c61f52;
+    
 }
 a, a:hover{
     -webkit-transition:all.6s ease;
     -moz-transition:all.6s ease;
     -o-transition:all.6s ease;
     -ms-transition:all.6s ease;
-    transition: all.6s ease
+    transition: all.6s ease;
+}
+p{
+    margin: 15px;
+    text-align: justify;
+    text-indent: 15px;
 }
 .clear{
     clear: both;/*отделяет одну часть сайта от другой*/
 }
+ul,ul li{
+    margin: 5px 15px;
+}
+
+#wrap_wrapper{
+    overflow: hidden;
+    width: 75%;
+    margin: 25px auto auto;
+    border-radius: 15px;
+    background-color: azure;
+}
 /*Стили для шапки*/
 
 header{
-    width: 96%;
+    width: 100%;
     float: left;
-    padding: 2%;
     background-color: #fafafa;
     border-bottom: 2px solid silver;
     margin-bottom: 20px;
@@ -54,118 +77,181 @@ header{
 }
 
 header #logo{
-    width: 50%;
+  /* background: white url("../img/logo3.jpg") repeat scroll 0% 0%;*/
+    /*height: 60%;*/
+    width: 85%;
     float: left;
     
 }
 header #logo a{
     color: #939393;
-    font-size: 2em;
+    font-size: 2.1em;
     font-family: Times New Roman, sans-serif;
+    text-align: 35px;
 }
 header #logo span{
     color: #e35367;
 }
+header #logo p{
+    
+    color: rgba(73, 58, 191, 0.87);
+    font-family: Times New Roman, sans-serif;
+    font-size: 0.7em;
+}
+header #logo img{
+    float: left;
+}
 
 header #menuHead{
-    width: 24%;
+   /* height: 40%;*/
+    width: 15%;
     float: left;
 }
 header #menuHead div{
     float: left;
     padding: 5px;
-    background-color: coral;
+    background-color: #939393;
     border-radius: 5px;
     color: #ffffff;
+    margin-left: 10%;
 }
 header #menuHead div:hover {
     background-color: #545784;
-}
-header #regAuth{
-    width: 20%;
-    float: left;
-    text-align: right;
-    font-size: 1em;
+    transition: all.6s ease;
 }
 /*Стили для для всего документа*/
 
 #wrapper{
-    width: 90%;
-    margin-left: 5%;
-    float: left;
+    overflow: hidden;
+    width: 100%;
+    margin-left: auto;
+    /*float: left;*/
 }
 /*Стили для левой колонки*/
 
+#wrapper #panel{
+    width: 20%;
+    float: left;
+    /*margin-left: 1%;*/
+    
+}
+#wrapper #panel p{
+    margin: 0;
+    margin-top: 10px;
+}
+/*#panel {
+    width: 20%;
+    float: left;
+    margin-right:0;
+}*/
 
+#wrapper #panel .box div a {
+    /*background-color: #939393;*/
+    /*border-radius: 5px;*/
+    color: #ffffff;
+    margin-top: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    /*border-radius: 10px;*/
+    clear: both;
+}
+#wrapper #panel .box div a:hover{
+    transition: all.6s ease;
+    margin-right: 15px;
+    background-color: #545784;
+}
+
+#wrapper #panel .box a{
+    float: right;
+    padding: 5px;
+    background-color: #939393;
+    /*border-radius: 5px;*/
+    color: #ffffff;
+}
 #wrapper #leftCol{
-    width: 60%;
+    width: 56%;
     float: left;
     margin-right: 0%;
+    padding: 1%;
+    text-align: justify;
+    text-indent: 15px;
+}
+#wrapper #leftCol .message{
+    font-size: 1.3em; 
+    padding-left: 20%; 
+    color: #c61f52;
+}
+#wrapper #leftCol #main{
+    width: 100%;
+    text-indent: 15px;
+}
+#wrapper #leftCol #main p{
+    text-indent: 15px;
+}
+#wrapper #leftCol #articles{
+    width: 92%;
+    padding: 3%;
+    padding-bottom: 1%;
+    /*background: rgba(192, 192, 192, 0.67);*/
+    /*margin-left: 1%;*/
+    text-indent: 15px;
+        
+}
+#wrapper #leftCol #articles img{
+    opacity: 0.75;
+    border-radius: 15px;
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 10px 15px;
+    
+}
+#wrapper #leftCol #articles a{
+    text-indent: 30px;
+    width: 50%;
 }
 
-#wrapper #leftCol #bigArticle{
-    width: 78%;
-    margin-left: 10%;
-    background-color: bisque;
-    padding: 1%;
-    float: left;
-}
-#wrapper #leftCol #bigArticle img,#wrapper #leftCol .article img{
-    width: 100%;
-    float: left;
+
+#wrapper #leftCol #articles .title{
     margin-bottom: 10px;
+    text-align: center;
 }
-#wrapper #leftCol #bigArticle h2,#wrapper #leftCol .article h2{
+#wrapper #leftCol #articles .title:hover {
+    transition: all.6s ease;
+    color: #c61f52;
+    
+}
+#wrapper #leftCol #articles span{
+    margin-left: 15px;
+}
+
+#wrapper #leftCol h1{
+    text-align: center; 
+    margin-bottom: 10px;
     font-weight: normal;
     font-size: 1.4em;
     color: darkblue;
-    font-family: Comic Sans MS,sans-serif;
-}
-#wrapper #leftCol #bigArticle p,#wrapper #leftCol .article p{
-    width: 90%;
-    margin-left: 5%;
-}
-#wrapper #leftCol #bigArticle div.more,#wrapper #leftCol .article div.more{
-    padding: 5px;
-    border-radius: 5px;
-    background-color: coral;
-    color: #fff;
-    width: 10%;
-    text-align: center;
-    margin-top: 10px;
-}
-#wrapper #leftCol #bigArticle div.more:hover,#wrapper #leftCol .article div.more:hover{
-    background-color: beige;
-}
-#wrapper #leftCol .article{
-    width: 40%;
-    margin-left: 5%;
-    background-color: #e6c4ff;
-    padding: 1%;
-    float: left;
-    
-}
-#wrapper #leftCol .article div.more{
-    width: 20%;
+    font-family: Tahoma,sans-serif;
 }
 
-#wrapper #leftCol input,#wrapper #leftCol button{
+#wrapper #leftCol input,#wrapper #leftCol button,#wrapper #leftCol select{
     width: 40%;
     margin-left: 25%;
     float: left;
     border-radius: 5px;
     border: 2px solid silver;
     padding: 5px;
-    color: #ea7683;
+    color: rgba(73, 58, 191, 0.87);
     margin-bottom: 10px;
     font-size: 1.1em;
 }
 
 #wrapper #leftCol input:focus,#wrapper #leftCol textarea:focus,#wrapper #leftCol button:focus{
     border: 2px solid #9a83e5;
+    
 }
 #wrapper #leftCol button:hover{
-    border: 2px solid #333;
+    border: 2px solid #9a83e5;
     cursor: pointer;
 }
 #wrapper #leftCol textarea{
@@ -176,34 +262,103 @@ header #regAuth{
     border-radius: 5px;
     border: 2px solid silver;
     padding: 5px;
-    color: #ea7683;
+    color: rgba(73, 58, 191, 0.87);
     margin-bottom: 10px;
     font-size: 1.1em;
     resize: none;
+}
+#wrapper #leftCol #myOffice h3{
+    margin: 5px 20px 10px;
+}
+#wrapper #leftCol #ideas p,#wrapper #leftCol #ideas h1{
+    text-align: justify;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+#wrapper #leftCol #ideas {
+    margin-bottom: 10px;
+    border: 1px outset black;
+}
+#wrapper #leftCol #resultSearch {
+    margin-bottom: 10px;
+    border: 1px outset black;
+    padding: 5px;
 }
 
 /*Стили для правой колонки*/
 #wrapper #rightCol{
     width: 20%;
+    margin-right: 1%;
     float: right;
 }
-#wrapper #rightCol .banner{
-    border: 2px;
-    width: 100%;
+#wrapper #rightCol #form{
+    padding: 5px;
+}
+#wrapper #rightCol a {
+    background-color: #939393;
+    /*border-radius: 5px;*/
+    color: white;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    clear: both;
     float: left;
+    padding: 5px;
+    font-size: 1em;
+    margin: 5px;
+}
+#wrapper #rightCol a:hover { 
+    transition: all.6s ease;
+    margin-left: 15px; 
+    color: white;
+    background-color: #545784;
+}
+
+
+#wrapper #rightCol div{
+    margin: 5px;
+}
+#wrapper #rightCol #search, #wrapper #rightCol #auth{
+   border: 1px outset black;
+}
+#wrapper #rightCol input{
+    float: left;
+    border-radius: 5px;
+    border: 1px solid #939393;
+    padding: 3px;
+    color: rgba(73, 58, 191, 0.87);
+    margin: 5px;
+    /*font-size: 0.85em;*/
+}
+
+#wrapper #rightCol input:hover {
+    border: 2px solid #9a83e5;
+    
+}
+
+#wrapper #panel .box a{
+    float: right;
+    padding: 5px;
+    
+}
+
+/*#rightCol .banner{
+    border: 2px;
+    width: 20%;
+    float: right;
     margin-bottom: 20px;
     border: 2px solid silver;
     box-sizing: border-box;
-}
+}*/
+
 
 /*Информация о нас*/
 
 #wrapper #leftCol #about_us {
-    width: 76%;
+    width: 86%;
     float: left;
     border: 1px solid silver;
     padding: 2%;
-    margin-left: 10%;
+    margin-left: 5%;
     background-color: azure;
 }
 
@@ -212,7 +367,7 @@ footer{
     width: 98%;
     float: left;
     padding: 1%;
-    background-color: #fafafa;
+    /*background-color: #fafafa;*/
     border-top: 2px solid silver;
     margin-top: 10px;
 }
@@ -235,32 +390,15 @@ footer #rights{
     text-align: right;
     font-size: 1.1em;
 }
-#center {
-    width: 20%;
-    float: left;
-}
-
-#bigArticle {
-    
-}
-
-.more {
-    
-}
-
-#panel {
-    width: 20%;
-    float: left;
-    margin-right:0;
-}
-
-#panel .box div a {
-    background-color: coral;
-    border-radius: 5px;
-    color: #ffffff;
-    margin-top: 10px;
-}
 
 #article {
     margin-bottom: 10px;
+}
+
+#likes {
+    width: 60%;
+}
+
+#unlikes {
+    width: 30%;
 }
